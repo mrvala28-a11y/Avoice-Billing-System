@@ -134,6 +134,9 @@ const Signup = () => {
             </div>
 
             <button type="submit">Sign Up</button>
+            <p className="login-text">
+              Already have an account? <Link to="/login">Log In</Link>
+            </p>
           </form>
         </div>
       </section>

@@ -1,0 +1,117 @@
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #2f3f9f 0%, #3f51b5 100%);
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  overflow-y: auto;
+}
+
+/* Top logo/title */
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  animation: fadeInDown 0.5s ease forwards;
+}
+
+.logo img {
+  width: 80px;
+  border-radius: 10px;
+}
+
+.logo h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Center menu */
+.center-menu {
+  flex: 1; /* Fill remaining space to center vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu li {
+  list-style: none;
+  margin: 15px 0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.menu li a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.menu li a i {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+
+.menu li:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateX(5px);
+}
+
+.menu li.active {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+/* Bottom menu */
+.bottom-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-menu li {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.bottom-menu li:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}

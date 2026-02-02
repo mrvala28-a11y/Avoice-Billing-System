@@ -1,0 +1,72 @@
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+/* Modal Box */
+.admin-profile-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  color: #333;
+  padding: 30px;
+  width: 350px;
+  border-radius: 15px;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: slideIn 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translate(-50%, -60%); }
+  100% { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.admin-profile-modal h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-content img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2f3f9f;
+}
+
+.user-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.close-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #2f3f9f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  background: #3f51b5;
+}
