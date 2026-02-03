@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API from "../services/api";
 import { showSuccess, showError } from "../utils/toast";
-
+import { addNotification } from "../utils/notifications"; // ✅ import
 import "./Login.css";
 import logo from "../assets/download (3).png";
 import bgImg from "../assets/download (4).png";
@@ -25,15 +25,18 @@ const Login = () => {
         password,
       });
 
+      // Store token and user
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      // ✅ Add notification for login
+      addNotification("Login", `User ${res.data.user.name} logged in successfully`);
 
       showSuccess("Login successful");
 
       setTimeout(() => {
         navigate("/dashboard");
       }, 1200);
-
     } catch (err) {
       showError(err.response?.data?.message || "Invalid credentials");
     }

@@ -1,0 +1,44 @@
+.page-container {
+  padding: 24px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.invoice-table thead {
+  background: #4f46e5;
+  color: white;
+}
+
+.paid {
+  color: green;
+  font-weight: 600;
+}
+
+.btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.btn.edit {
+  background: #38bdf8;
+}
+
+.btn.delete {
+  background: #ef4444;
+  color: white;
+}

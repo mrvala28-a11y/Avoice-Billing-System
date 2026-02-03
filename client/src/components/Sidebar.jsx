@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { showWarning } from "../utils/toast";
 import ConfirmLogout from "./ConfirmLogout";
 import AdminProfileModal from "./AdminProfileModal";
+import Header from "./Header";
 import logoImg from "../assets/download (3).png";
 import "./Sidebar.css";
 
 const Sidebar = () => {
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [openLogout, setOpenLogout] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
@@ -20,10 +21,11 @@ const Sidebar = () => {
     navigate("/");
   };
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => location.pathname.includes(path);
 
   return (
     <>
+      {/* SIDEBAR */}
       <aside className="sidebar fixed">
         <div className="sidebar-top">
           <div className="logo">
@@ -34,6 +36,7 @@ const Sidebar = () => {
           </div>
         </div>
 
+        {/* CENTER MENU */}
         <ul className="menu center-menu">
           <li className={isActive("/dashboard") ? "active" : ""}>
             <Link to="/dashboard">
@@ -43,27 +46,28 @@ const Sidebar = () => {
           </li>
 
           <li className={isActive("/manage-invoice") ? "active" : ""}>
-            <Link to="/manage-invoice">
+            <Link to="/dashboard/manage-invoice">
               <i className="fa fa-file-invoice"></i>
-              <span>Invoice</span>
+              <span>Manage Invoice</span>
             </Link>
           </li>
 
           <li className={isActive("/create-invoice") ? "active" : ""}>
-            <Link to="/create-invoice">
+            <Link to="/dashboard/create-invoice">
               <i className="fa fa-circle-plus"></i>
               <span>Create Invoice</span>
             </Link>
           </li>
 
           <li className={isActive("/business") ? "active" : ""}>
-            <Link to="/business">
+            <Link to="/dashboard/business">
               <i className="fa fa-building"></i>
               <span>Business Profile</span>
             </Link>
           </li>
         </ul>
 
+        {/* BOTTOM MENU */}
         <ul className="menu bottom-menu">
           <li onClick={() => setOpenProfile(true)}>
             <i className="fa fa-user-gear"></i>
@@ -76,6 +80,12 @@ const Sidebar = () => {
           </li>
         </ul>
       </aside>
+
+      {/* MAIN CONTENT */}
+      <div className="main-content">
+        <Header />
+        <Outlet />
+      </div>
 
       {/* MODALS */}
       <ConfirmLogout

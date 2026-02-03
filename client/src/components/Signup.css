@@ -173,5 +173,11 @@ button {
   }
 } 
 
+.main-content {
+  margin-left: 260px; /* sidebar width */
+  padding: 20px;
+  min-height: 100vh;
+  background: #f8fafc;
+}
 
 

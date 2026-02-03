@@ -2,43 +2,45 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Dashboard from "./pages/Dashboard";
+import Sidebar from "./components/Sidebar";
 import ProtectedRoute from "./components/ProtectedRoute";
+
+import Dashboard from "./pages/Dashboard";
+import ManageInvoice from "./pages/ManageInvoice";
+import CreateInvoice from "./pages/CreateInvoice";
+import BusinessProfile from "./pages/BusinessProfile";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          {/* 🌐 PUBLIC PAGES */}
+          {/* PUBLIC */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
 
-          {/* 🔐 PROTECTED PAGE */}
+          {/* PROTECTED WITH SIDEBAR */}
           <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
                 <Sidebar />
-                <Dashboard />
               </ProtectedRoute>
             }
-          />
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="manage-invoice" element={<ManageInvoice />} />
+            <Route path="create-invoice" element={<CreateInvoice />} />
+            <Route path="business" element={<BusinessProfile />} />
+          </Route>
         </Routes>
       </BrowserRouter>
 
-      {/* 🔔 TOAST */}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        newestOnTop
-        theme="colored"
-      />
+      <ToastContainer position="top-right" autoClose={3000} theme="colored" />
     </>
   );
 }

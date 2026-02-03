@@ -1,22 +1,178 @@
+/* 🔲 Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 100;
+}
+
+/* 🧾 Modal */
 .admin-profile-modal {
-  width: 400px;
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1001;
+  background: #fff;
+  width: 420px;
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 200;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* 🔝 Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+/* 🔔 Bell */
+.notification-bell {
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* 🔢 Count Badge */
+.notification-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: red;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* 🔽 Dropdown */
+.notification-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 280px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 300;
+}
+
+/* 🧹 Clear Button */
+.clear-btn {
+  width: 100%;
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.clear-btn:hover {
+  background: #d32f2f;
+}
+
+/* 🔔 Notification Item */
+.notification-item {
+  border-bottom: 1px solid #eee;
+  padding: 6px 0;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.notification-item span {
+  font-size: 11px;
+  color: #777;
+}
+
+/* 🚫 Empty */
+.empty-text {
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+}
+
+/* 👤 Profile Section */
+.profile-section {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-section label {
+  font-size: 13px;
+  margin-bottom: 3px;
+  color: #444;
 }
 
 .profile-section input {
-  width: 100%;
-  margin-bottom: 10px;
   padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
+.profile-section input:disabled {
+  background: #f5f5f5;
+}
+
+/* 🎯 Buttons */
 .modal-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cancel-btn {
+  background: #9e9e9e;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: #757575;
+}
+
+.update-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.update-btn:disabled {
+  background: #a5d6a7;
+  cursor: not-allowed;
+}
+
+.update-btn:hover:not(:disabled) {
+  background: #388e3c;
 }

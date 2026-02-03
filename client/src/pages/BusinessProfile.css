@@ -1,0 +1,23 @@
+.business-card {
+  max-width: 420px;
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+}
+
+.business-card input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.business-card button {
+  width: 100%;
+  padding: 10px;
+  background: #16a34a;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}

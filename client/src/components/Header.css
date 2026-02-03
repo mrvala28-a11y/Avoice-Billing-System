@@ -1,0 +1,108 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.header-left h2 span {
+  color: #4caf50;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #4caf50;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  position: relative;
+}
+
+.online-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: limegreen;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+/* Notification Bell */
+.notification-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.bell {
+  font-size: 24px;
+}
+
+.notif-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Notification Popup */
+.notification-popup {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  width: 300px;
+  max-height: 400px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 15px;
+  overflow-y: auto;
+  z-index: 10;
+  animation: popupFade 0.3s ease-in-out;
+}
+
+.notification-popup h4 {
+  margin-bottom: 10px;
+}
+
+.notification-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-popup li {
+  padding: 10px 5px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.notification-popup li .time {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-top: 3px;
+}
+
+@keyframes popupFade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
