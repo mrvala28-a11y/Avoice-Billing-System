@@ -107,11 +107,11 @@
 }
 
 /* Scrollbar styling */
-.sidebar::-webkit-scrollbar {
+/* .sidebar::-webkit-scrollbar {
   width: 6px;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.3);
   border-radius: 3px;
-}
+} */

@@ -1,23 +1,219 @@
-.business-card {
-  max-width: 420px;
-  background: white;
+/* Page wrapper - ensures full width and proper box sizing */
+.bp-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 24px;
-  border-radius: 14px;
+  box-sizing: border-box;
 }
 
-.business-card input {
+/* Card Styling */
+.card {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeUp 0.5s ease;
+  box-sizing: border-box;
+  margin-bottom: 24px;
 }
 
-.business-card button {
-  width: 100%;
-  padding: 10px;
-  background: #16a34a;
-  border: none;
-  color: white;
+/* Headings */
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 20px;
+  color: #1f2937;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 12px;
+}
+
+/* Rows = GRID */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+}
+
+/* Label Styling */
+label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Inputs */
+input {
+  width: 100%; 
+  padding: 12px 14px;
   border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+/* --- BRANDING SECTION --- */
+.branding {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.asset-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.asset {
+  aspect-ratio: 1 / 1;
+  background: #f9fafb;
+  border: 2px dashed #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.asset-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+}
+
+.asset-buttons button {
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.asset-buttons .change { background: #6366f1; color: white; }
+.asset-buttons .remove { background: #ffffff; color: #ef4444; border: 1px solid #fee2e2; }
+
+.asset-label {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+/* --- TAX SETTING UI (REFINED) --- */
+.tax-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Spacing between input blocks */
+}
+
+.tax-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Ensures the % doesn't overlap text and looks like part of the UI */
+.tax-input input {
+  padding-right: 40px !important; 
+}
+
+.tax-input::after {
+  content: "%";
+  position: absolute;
+  right: 15px;
+  font-weight: 700;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* --- ACTIONS (SAVE/CLEAR) --- */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.save-btn, .clear-btn {
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.save-btn {
+  background: #6366f1;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.save-btn:hover { background: #4f46e5; transform: translateY(-2px); }
+
+.clear-btn {
+  background: #fff;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+}
+
+.clear-btn:hover { background: #f9fafb; }
+
+/* Animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .branding {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .bp-page { padding: 16px; }
+  .card { padding: 20px; }
+}
+
+@media (max-width: 600px) {
+  .asset-box { grid-template-columns: 1fr; }
+  .actions { flex-direction: column; }
+  .save-btn, .clear-btn { width: 100%; }
 }
