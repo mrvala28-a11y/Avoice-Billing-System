@@ -1,191 +1,138 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import StatusPieChart from "../components/StatusPieChart";
+import RevenueBarChart from "../components/RevenueBarChart";
 import "./Dashboard.css";
 
-/* ---------------- MOCK API (Replace with real backend) ---------------- */
-const fetchInvoices = () =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([]); // 👈 aaje empty, kale API data aavse
-    }, 800);
-  });
-
 const Dashboard = () => {
+  const token = localStorage.getItem("token");
   const [invoices, setInvoices] = useState([]);
-  const [activeTab, setActiveTab] = useState("All");
-  const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
-  const PAGE_SIZE = 5;
+  const fetchInvoices = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/invoices", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-  /* ---------------- API CALL ---------------- */
+      if (Array.isArray(res.data.invoices)) {
+        setInvoices(res.data.invoices);
+      } else {
+        setInvoices([]);
+      }
+      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetchInvoices().then((data) => setInvoices(data));
+    fetchInvoices();
+    const interval = setInterval(() => fetchInvoices(), 15000);
+    return () => clearInterval(interval);
   }, []);
 
-  /* ---------------- FILTER + SEARCH ---------------- */
-  const filteredData = useMemo(() => {
-    let data =
-      activeTab === "All"
-        ? invoices
-        : invoices.filter((i) => i.status === activeTab);
+  const totalRevenue = invoices.reduce((s, i) => s + (i.amount || 0), 0);
+  const paidInvoices = invoices.filter((i) => i.status === "Paid").length;
+  const pendingInvoices = invoices.filter((i) => i.status === "Unpaid").length;
 
-    if (search) {
-      data = data.filter(
-        (i) =>
-          i.client.toLowerCase().includes(search.toLowerCase()) ||
-          i.amount.toString().includes(search)
-      );
-    }
-    return data;
-  }, [invoices, activeTab, search]);
-
-  /* ---------------- PAGINATION ---------------- */
-  const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
-  const paginatedData = filteredData.slice(
-    (page - 1) * PAGE_SIZE,
-    page * PAGE_SIZE
-  );
-
-  /* ---------------- TABS ---------------- */
-  const tabs = [
-    "All",
-    "Paid",
-    "Unpaid",
-    "OverDue",
-    "Draft",
-  ].map((t) => ({
-    name: t,
-    count:
-      t === "All"
-        ? invoices.length
-        : invoices.filter((i) => i.status === t).length,
-  }));
-
-  /* ---------------- CARD METRICS ---------------- */
-  const cards = [
-    { title: "Paid", color: "green" },
-    { title: "Unpaid", color: "orange" },
-    { title: "OverDue", color: "red" },
-    { title: "Draft", color: "blue" },
-  ].map((c) => {
-    const items = invoices.filter((i) => i.status === c.title);
-    return {
-      ...c,
-      count: items.length,
-      total: items.reduce((s, i) => s + i.amount, 0),
-    };
-  });
+  if (loading) return <div className="loader"><h3>Loading Dashboard...</h3></div>;
 
   return (
-    <div className="dashboard">
-
-      {/* ================= HEADER ================= */}
-      <h1 className="title">Admin Dashboard</h1>
-
-      {/* ================= CARDS ================= */}
-      <div className="card-grid">
-        {cards.map((c) => (
-          <div key={c.title} className={`card ${c.color}`}>
-            <h4>{c.title}</h4>
-            <p>{c.count} Invoices</p>
-            <strong>₹ {c.total}</strong>
-          </div>
-        ))}
+    <div className="dashboard-wrapper">
+      <div className="dashboard-header">
+        <h2>📊 Business Overview</h2>
+        <p>Real-time analytics and invoice tracking</p>
       </div>
 
-      {/* ================= CHART GRID ================= */}
-      <div className="chart-grid">
-        <div className="chart-box">📊 Revenue Chart (future)</div>
-        <div className="chart-box">📈 Monthly Growth</div>
-        <div className="chart-box">🥧 Status Distribution</div>
-        <div className="chart-box">📉 Outstanding Amount</div>
+      {/* SUMMARY CARDS - Row 1 */}
+      <div className="summary-grid">
+        <div className="stat-card">
+          <div className="stat-icon blue">📄</div>
+          <div>
+            <h4>Total Invoices</h4>
+            <p className="stat-value">{invoices.length}</p>
+          </div>
+        </div>
+
+        <div className="stat-card">
+          <div className="stat-icon green">✅</div>
+          <div>
+            <h4>Paid Invoices</h4>
+            <p className="stat-value">{paidInvoices}</p>
+          </div>
+        </div>
+
+        <div className="stat-card">
+          <div className="stat-icon orange">⏳</div>
+          <div>
+            <h4>Pending</h4>
+            <p className="stat-value">{pendingInvoices}</p>
+          </div>
+        </div>
+
+        <div className="stat-card">
+          <div className="stat-icon purple">💰</div>
+          <div>
+            <h4>Total Revenue</h4>
+            <p className="stat-value">₹ {totalRevenue.toLocaleString()}</p>
+          </div>
+        </div>
       </div>
 
-      {/* ================= SEARCH ================= */}
-      <input
-        className="search"
-        placeholder="Search by client or amount..."
-        value={search}
-        onChange={(e) => {
-          setSearch(e.target.value);
-          setPage(1);
-        }}
-      />
-
-      {/* ================= TABS ================= */}
-     {/* ================= TABS ================= */}
-<div className="tabs">
-  {tabs.map((t) => (
-    <button
-      key={t.name}
-      className={`tab-btn ${t.name.toLowerCase()} ${
-        activeTab === t.name ? "active" : ""
-      }`}
-      onClick={() => {
-        setActiveTab(t.name);
-        setPage(1);
-      }}
-    >
-      {t.name} ({t.count})
-    </button>
-  ))}
-</div>
-
-      {/* ================= TABLE ================= */}
-      <div className="table-box">
-        {paginatedData.length === 0 ? (
-          <div className="empty">
-            😴 No invoices yet  
-            <br />
-            Create invoice and dashboard will auto update
+      {/* CHARTS - Row 2 */}
+      <div className="charts-grid">
+        <div className="chart-card">
+          <h4>Status Distribution</h4>
+          <div className="chart-container">
+            <StatusPieChart invoices={invoices} />
           </div>
-        ) : (
-          <table>
+        </div>
+
+        <div className="chart-card">
+          <h4>Revenue Analytics</h4>
+          <div className="chart-container">
+            <RevenueBarChart invoices={invoices} />
+          </div>
+        </div>
+      </div>
+
+      {/* TABLE - Row 3 */}
+      <div className="table-section">
+        <div className="table-header">
+          <h4>Recent Invoices</h4>
+          <button className="view-all-btn">View All</button>
+        </div>
+        <div className="table-responsive">
+          <table className="modern-table">
             <thead>
               <tr>
-                <th>id</th>
+                <th>ID</th>
                 <th>Client</th>
+                <th>Created</th>
                 <th>Amount</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              {paginatedData.map((i, idx) => (
-                <tr key={i.id}>
-                  <td>{(page - 1) * PAGE_SIZE + idx + 1}</td>
-                  <td>{i.client}</td>
-                  <td>₹ {i.amount}</td>
+              {invoices.slice(0, 5).map((inv) => (
+                <tr key={inv._id}>
+                  <td>#{inv.invoiceNo}</td>
+                  <td className="client-name">{inv.client}</td>
+                  <td>{inv.createDate}</td>
+                  <td className="amount-cell">₹{inv.amount}</td>
                   <td>
-                    <span className={`badge ${i.status.toLowerCase()}`}>
-                      {i.status}
+                    <span className={`badge ${inv.status.toLowerCase()}`}>
+                      {inv.status}
                     </span>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        )}
-      </div>
-
-      {/* ================= PAGINATION ================= */}
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-            Previous
-          </button>
-
-          <span>
-            Page {page} of {totalPages}
-          </span>
-
-          <button
-            disabled={page === totalPages}
-            onClick={() => setPage(page + 1)}
-          >
-            Next
-          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 };

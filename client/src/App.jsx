@@ -12,8 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import ManageInvoice from "./pages/ManageInvoice";
 import CreateInvoice from "./pages/CreateInvoice";
 import BusinessProfile from "./pages/BusinessProfile";
-
-
+import EditInvoice from "./pages/EditInvoice";
 
 function App() {
   return (
@@ -38,6 +37,9 @@ function App() {
             <Route path="manage-invoice" element={<ManageInvoice />} />
             <Route path="create-invoice" element={<CreateInvoice />} />
             <Route path="business" element={<BusinessProfile />} />
+
+            {/* ✅ FIXED HERE */}
+            <Route path="edit-invoice/:id" element={<EditInvoice />} />
           </Route>
         </Routes>
       </BrowserRouter>

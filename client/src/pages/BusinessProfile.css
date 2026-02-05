@@ -1,200 +1,235 @@
-/* Page wrapper - Puri width mate 100% karyu che */
+/* ================= PAGE ================= */
 .bp-page {
   width: 100%;
-  padding: 30px;
-  background-color: #f8fafc;
   min-height: 100vh;
-  box-sizing: border-box;
+  padding: 30px 40px;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  animation: fadeIn 0.6s ease-in;
 }
 
-/* Card Styling */
+/* ================= CARD ================= */
 .card {
   width: 100%;
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 35px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  animation: fadeUp 0.6s ease-out;
-  box-sizing: border-box;
-  margin-bottom: 30px;
-  border: 1px solid #eef2f6;
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 26px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
 }
 
-/* Headings */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.08);
+}
+
 .card h3 {
-  margin-top: 0;
-  margin-bottom: 30px;
-  font-size: 22px;
+  margin-bottom: 18px;
+  font-size: 18px;
   color: #1e293b;
-  display: flex;
-  align-items: center;
-  gap: 12px;
 }
 
-/* Form Grid - 3 Columns for Full Width feel */
+/* ================= FORM ================= */
 .form-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns jethi width vadhu dekhay */
-  gap: 30px;
-  margin-bottom: 25px;
-}
-
-/* Full width inputs mate */
-.form-group.full {
-  grid-column: 1 / -1;
-}
-
-/* Branding Layout Sudharyo */
-.branding {
-  display: grid;
-  grid-template-columns: 2fr 1fr; /* Image assets ne vadhare jagya aapi */
-  gap: 30px;
+  display: flex;
+  gap: 20px;
   width: 100%;
 }
 
-/* Asset Box */
-.asset-box {
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  margin-top: 16px;
+}
+
+label {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid #c7d2fe;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+}
+
+/* ================= BRANDING ================= */
+.branding {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: 3fr 1.5fr;
+  gap: 26px;
+  width: 100%;
+}
+
+/* ================= ASSETS ================= */
+.asset-box {
+  display: flex;
+  gap: 26px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.asset-item {
+  text-align: center;
+  animation: popIn 0.4s ease;
 }
 
 .asset {
-  aspect-ratio: 16 / 9; /* Landscape look for wider feel */
+  width: 160px;
+  height: 160px;
+  border-radius: 18px;
   background: #f1f5f9;
-  border: 2px dashed #cbd5e1;
-  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px dashed #c7d2fe;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .asset:hover {
   border-color: #6366f1;
-  background: #eff6ff;
+  background: #eef2ff;
 }
 
-/* Inputs Premium Look */
-input {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1.5px solid #e2e8f0;
-  font-size: 15px;
-  background: #ffffff;
-  transition: all 0.3s ease;
-}
-
-input:focus {
-  outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-}
-
-/* Save & Clear Buttons */
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  background: #ffffff;
-  padding: 25px;
-}
-
-.save-btn {
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
-  color: white;
-  padding: 15px 40px;
-  border-radius: 12px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
-}
-
-.clear-btn {
-  background: #f1f5f9;
-  color: #64748b;
-  padding: 15px 40px;
-  border-radius: 12px;
-  font-weight: 700;
-  border: 1px solid #e2e8f0;
-}
-
-/* Responsive Logic */
-@media (max-width: 1200px) {
-  .form-row { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .form-row, .branding, .asset-box {
-    grid-template-columns: 1fr;
-  }
-}
-.asset-box {
-  display: flex;
-  gap: 20px;
-}
-
-.asset-item {
-  width: 240px;
-  text-align: center;
-}
-
-/* MAIN IMAGE CONTAINER */
-.asset {
-  height: 150px;
-  border: 2px dashed #cfd8dc;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f9fcff;
-  overflow: hidden;
-}
-
-/* IMAGE FIT PERFECTLY */
 .asset img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* 🔥 IMPORTANT */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-/* BUTTON AREA */
+/* ================= ASSET ACTIONS ================= */
 .asset-actions {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   justify-content: center;
-  gap: 8px;
-}
-
-.asset input[type="file"] {
-  display: none;
-}
-
-/* CUSTOM BUTTON */
-.upload-btn,
-.remove-btn {
-  padding: 6px 14px;
-  font-size: 13px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
+  gap: 10px;
 }
 
 .upload-btn {
-  background: #fff;
-  border: 1px solid #d0d7de;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  padding: 7px 14px;
+  font-size: 13px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(79, 70, 229, 0.35);
 }
 
 .remove-btn {
-  background: #f7931e;
-  color: white;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 7px 12px;
+  font-size: 13px;
+  border-radius: 9px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* LABEL */
+.remove-btn:hover {
+  background: #fecaca;
+}
+
+/* ================= LABEL ================= */
 .asset-label {
   margin-top: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* ================= TAX BOX ================= */
+.tax-box input {
+  margin-bottom: 14px;
+}
+
+/* ================= ACTION BUTTON ================= */
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 14px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(22, 163, 74, 0.4);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .branding {
+    grid-template-columns: 1fr;
+  }
+
+  .asset-box {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .bp-page {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .asset {
+    width: 130px;
+    height: 130px;
+  }
 }
