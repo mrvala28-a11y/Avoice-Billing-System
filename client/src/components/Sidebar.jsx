@@ -6,6 +6,8 @@ import AdminProfileModal from "./AdminProfileModal";
 import Header from "./Header";
 import logoImg from "../assets/download (3).png";
 import "./Sidebar.css";
+import ScrollToTop from "./ScrollToTop";
+
 
 const Sidebar = () => {
   const location = useLocation();
@@ -82,10 +84,11 @@ const Sidebar = () => {
       </aside>
 
       {/* MAIN CONTENT */}
-      <div className="main-content">
-        <Header />
-        <Outlet />
-      </div>
+        {/* MAIN CONTENT */}
+    <div className="main-content">
+      <Header />
+      <Outlet />
+    </div>
 
       {/* MODALS */}
       <ConfirmLogout
@@ -98,6 +101,7 @@ const Sidebar = () => {
         open={openProfile}
         onClose={() => setOpenProfile(false)}
       />
+      <ScrollToTop />
     </>
   );
 };

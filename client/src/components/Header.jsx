@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Header.css";
 import { markAllAsSeen } from "../utils/notifications"; // ✅ import
+import ScrollToTop from "./ScrollToTop";
 
 const Header = () => {
   const [user, setUser] = useState(null);
@@ -83,6 +84,7 @@ const Header = () => {
         </div>
       </div>
     </header>
+    
   );
 };
 

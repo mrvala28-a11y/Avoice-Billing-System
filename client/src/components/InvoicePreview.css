@@ -1,0 +1,75 @@
+.invoice-preview {
+  padding: 20px;
+  background: #fff;
+  color: #222;
+}
+
+.invoice-preview h2 {
+  text-align: right;
+  letter-spacing: 2px;
+  color: #4a90e2;
+}
+
+.invoice-preview .top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.invoice-preview hr {
+  border: 0;
+  border-top: 2px solid #eee;
+  margin: 20px 0;
+}
+
+/* Status Badges */
+.status {
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.paid { background: #e6fffa; color: #2d3748; border: 1px solid #38b2ac; }
+.status.unpaid { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; }
+.status.draft { background: #edf2f7; color: #4a5568; }
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+}
+
+table th {
+  background: #f8f9fa;
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid #eee;
+}
+
+table td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+/* Summary Area */
+.summary {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.summary p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.summary h3 {
+  color: #2c3e50;
+  font-size: 22px;
+  margin-top: 10px;
+  border-top: 2px solid #4a90e2;
+  display: inline-block;
+  padding-top: 10px;
+}

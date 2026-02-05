@@ -1,9 +1,9 @@
-/* Page wrapper - ensures full width and proper box sizing */
+/* Page wrapper - Puri width mate 100% karyu che */
 .bp-page {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px;
+  padding: 30px;
+  background-color: #f8fafc;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
@@ -11,62 +11,79 @@
 .card {
   width: 100%;
   background: #ffffff;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  animation: fadeUp 0.5s ease;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  animation: fadeUp 0.6s ease-out;
   box-sizing: border-box;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
+  border: 1px solid #eef2f6;
 }
 
 /* Headings */
 .card h3 {
   margin-top: 0;
-  margin-bottom: 24px;
-  font-size: 20px;
-  color: #1f2937;
-  border-bottom: 1px solid #f3f4f6;
-  padding-bottom: 12px;
+  margin-bottom: 30px;
+  font-size: 22px;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-/* Rows = GRID */
+/* Form Grid - 3 Columns for Full Width feel */
 .form-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns jethi width vadhu dekhay */
+  gap: 30px;
+  margin-bottom: 25px;
 }
 
-/* Form group */
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
+/* Full width inputs mate */
 .form-group.full {
   grid-column: 1 / -1;
-  margin-bottom: 20px;
 }
 
-/* Label Styling */
-label {
-  font-weight: 600;
-  font-size: 14px;
-  color: #4b5563;
-  margin-bottom: 4px;
-  display: block;
+/* Branding Layout Sudharyo */
+.branding {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Image assets ne vadhare jagya aapi */
+  gap: 30px;
+  width: 100%;
 }
 
-/* Inputs */
-input {
-  width: 100%; 
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  font-size: 14px;
+/* Asset Box */
+.asset-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.asset {
+  aspect-ratio: 16 / 9; /* Landscape look for wider feel */
+  background: #f1f5f9;
+  border: 2px dashed #cbd5e1;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s ease;
-  box-sizing: border-box;
+}
+
+.asset:hover {
+  border-color: #6366f1;
+  background: #eff6ff;
+}
+
+/* Inputs Premium Look */
+input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 15px;
+  background: #ffffff;
+  transition: all 0.3s ease;
 }
 
 input:focus {
@@ -75,145 +92,109 @@ input:focus {
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
-/* --- BRANDING SECTION --- */
-.branding {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 24px;
-  width: 100%;
-  margin-bottom: 24px;
+/* Save & Clear Buttons */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  background: #ffffff;
+  padding: 25px;
 }
 
+.save-btn {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  padding: 15px 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+}
+
+.clear-btn {
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 15px 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+}
+
+/* Responsive Logic */
+@media (max-width: 1200px) {
+  .form-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .form-row, .branding, .asset-box {
+    grid-template-columns: 1fr;
+  }
+}
 .asset-box {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 10px;
+  display: flex;
+  gap: 20px;
 }
 
+.asset-item {
+  width: 240px;
+  text-align: center;
+}
+
+/* MAIN IMAGE CONTAINER */
 .asset {
-  aspect-ratio: 1 / 1;
-  background: #f9fafb;
-  border: 2px dashed #e5e7eb;
+  height: 150px;
+  border: 2px dashed #cfd8dc;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  transition: all 0.3s ease;
+  background: #f9fcff;
+  overflow: hidden;
 }
 
-.asset-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 8px;
+/* IMAGE FIT PERFECTLY */
+.asset img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 🔥 IMPORTANT */
 }
 
-.asset-buttons button {
-  padding: 6px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-}
-
-.asset-buttons .change { background: #6366f1; color: white; }
-.asset-buttons .remove { background: #ffffff; color: #ef4444; border: 1px solid #fee2e2; }
-
-.asset-label {
-  text-align: center;
+/* BUTTON AREA */
+.asset-actions {
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.asset input[type="file"] {
+  display: none;
+}
+
+/* CUSTOM BUTTON */
+.upload-btn,
+.remove-btn {
+  padding: 6px 14px;
   font-size: 13px;
-  font-weight: 600;
-  color: #4b5563;
-}
-
-/* --- TAX SETTING UI (REFINED) --- */
-.tax-box {
-  display: flex;
-  flex-direction: column;
-  gap: 16px; /* Spacing between input blocks */
-}
-
-.tax-input {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* Ensures the % doesn't overlap text and looks like part of the UI */
-.tax-input input {
-  padding-right: 40px !important; 
-}
-
-.tax-input::after {
-  content: "%";
-  position: absolute;
-  right: 15px;
-  font-weight: 700;
-  color: #9ca3af;
-  pointer-events: none;
-}
-
-/* --- ACTIONS (SAVE/CLEAR) --- */
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 16px;
-  margin-top: 12px;
-}
-
-.save-btn, .clear-btn {
-  padding: 12px 28px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
+  border-radius: 6px;
   border: none;
-  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.save-btn {
-  background: #6366f1;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-.save-btn:hover { background: #4f46e5; transform: translateY(-2px); }
-
-.clear-btn {
+.upload-btn {
   background: #fff;
-  color: #6b7280;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #d0d7de;
 }
 
-.clear-btn:hover { background: #f9fafb; }
-
-/* Animation */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+.remove-btn {
+  background: #f7931e;
+  color: white;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
-  .branding {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-  .bp-page { padding: 16px; }
-  .card { padding: 20px; }
-}
-
-@media (max-width: 600px) {
-  .asset-box { grid-template-columns: 1fr; }
-  .actions { flex-direction: column; }
-  .save-btn, .clear-btn { width: 100%; }
+/* LABEL */
+.asset-label {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
 }

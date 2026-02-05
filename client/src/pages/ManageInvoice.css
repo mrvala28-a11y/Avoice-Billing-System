@@ -1,44 +1,148 @@
-.page-container {
+.manage-invoice-container {
   padding: 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  margin: 20px;
+  border: 1px solid #f0f2f5;
+}
+
+/* Header */
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.invoice-header h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.create-btn {
+  background: linear-gradient(135deg, #ffb266, #fb923c);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Search */
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 350px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+/* Table */
+.invoice-table-box {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #edf2f7;
 }
 
 .invoice-table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
 }
 
-.invoice-table th,
+.invoice-table th {
+  background: #f8fafc;
+  padding: 16px;
+  font-size: 13px;
+  color: #718096;
+}
+
 .invoice-table td {
-  padding: 12px;
-  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.invoice-table thead {
-  background: #4f46e5;
-  color: white;
+.invoice-table tr:hover {
+  background: #fcfcfd;
 }
 
-.paid {
-  color: green;
+/* Status */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-size: 12px;
   font-weight: 600;
 }
 
-.btn {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: none;
+/* Icons & Buttons */
+.view-icon {
   cursor: pointer;
-  margin-right: 6px;
+  font-size: 18px;
+  color: #a0aec0;
 }
 
-.btn.edit {
-  background: #38bdf8;
+.action-btns {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
 }
 
-.btn.delete {
-  background: #ef4444;
+.update-btn {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #bbf7d0;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.delete-btn {
+  background: #fff1f2;
+  color: #e11d48;
+  border: 1px solid #fecdd3;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+/* Pagination */
+.pagination-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: white;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 8px;
+}
+
+.page-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.page-num.active {
+  background: #fb923c;
   color: white;
+}
+
+.no-data {
+  padding: 30px;
+  color: #94a3b8;
 }

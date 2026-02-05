@@ -1,31 +1,187 @@
-.invoice-form {
-  max-width: 420px;
-  background: white;
-  padding: 24px;
-  border-radius: 12px;
-}
-
-.invoice-form label {
-  font-size: 14px;
-  margin-top: 12px;
-  display: block;
-}
-
-.invoice-form input {
+/* ================= CONTAINER ================= */
+.manage-invoice-container {
   width: 100%;
-  padding: 10px;
-  margin-top: 4px;
+  max-width: 100%;
+  margin: 0;
+  padding: 30px 60px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* ================= CARD ================= */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* ================= INPUT ================= */
+input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+  transition: 0.3s;
 }
 
-.invoice-form button {
-  margin-top: 16px;
-  width: 100%;
-  padding: 10px;
-  background: linear-gradient(135deg, #4f46e5, #4338ca);
+input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+/* ================= STATUS BUTTONS ================= */
+.status-buttons {
+  display: flex;
+  flex-direction: row;     /* ✅ one row */
+  gap: 15px;
+  flex-wrap: nowrap;       /* ✅ break na thase */
+  align-items: center;
+}
+
+.status-buttons button {
+  padding: 10px 22px;
+  border-radius: 25px;
   border: none;
-  color: white;
-  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
+  color: white;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+/* individual colors */
+.status-buttons button:nth-child(1) {
+  background: #7f8c8d; /* Draft */
+}
+.status-buttons button:nth-child(2) {
+  background: #27ae60; /* Paid */
+}
+.status-buttons button:nth-child(3) {
+  background: #f39c12; /* Unpaid */
+}
+.status-buttons button:nth-child(4) {
+  background: #e74c3c; /* Overdue */
+}
+
+/* active */
+.status-buttons button.active {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= ITEM ROW ================= */
+.item-row {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 40px;
+  gap: 12px;
+  width: 100%;
+  align-items: center;
+}
+
+.item-row svg {
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.item-row svg:hover {
+  transform: scale(1.2);
+}
+
+/* ================= MAIN BUTTONS ================= */
+button {
+  padding: 12px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+/* Preview & Save buttons */
+.preview-actions button:nth-child(1),
+.manage-invoice-container > div:last-child button:nth-child(1) {
+  background: #4a90e2;
+  color: white;
+}
+
+.preview-actions button:nth-child(2),
+.manage-invoice-container > div:last-child button:nth-child(2) {
+  background: #27ae60;
+  color: white;
+}
+
+/* ================= PREVIEW MODAL ================= */
+.preview-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.preview-box {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.preview-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
 }

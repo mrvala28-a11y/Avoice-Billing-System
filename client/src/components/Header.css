@@ -1,4 +1,7 @@
 .app-header {
+  position: sticky;   /* 👈 important */
+  top: 0;
+  z-index: 999;       /* sidebar thi niche rahe */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,6 +12,10 @@
 
 .header-left h2 span {
   color: #4caf50;
+}
+.main-content {
+  margin-left: 260px;
+  min-height: 100vh;
 }
 
 .header-right {
