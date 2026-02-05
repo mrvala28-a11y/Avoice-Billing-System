@@ -98,7 +98,6 @@ const ManageInvoice = () => {
               <th>Create</th>
               <th>Due</th>
               <th>Amount</th>
-              <th>Send</th>
               <th>Status</th>
               <th>View</th>
               <th>Action</th>
@@ -117,7 +116,6 @@ const ManageInvoice = () => {
                   <td style={{ textAlign: "center" }}>{inv.createDate}</td>
                   <td style={{ textAlign: "center" }}>{inv.dueDate}</td>
                   <td style={{ textAlign: "center" }}><b>₹{inv.amount}</b></td>
-                  <td style={{ textAlign: "center" }}>{inv.sendCount}</td>
                   <td style={{ textAlign: "center" }}>
                     <span className="status-badge" style={statusStyle(inv.status)}>
                       {inv.status}
@@ -138,27 +136,6 @@ const ManageInvoice = () => {
           </tbody>
         </table>
       </div>
-
-      {/* Pagination Row */}
-      {/* <div className="pagination-row">
-        <button className="nav-btn" disabled={page === 1} onClick={() => setPage(page - 1)}>
-          « Previous
-        </button>
-        <div className="page-numbers">
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              className={`page-num ${page === i + 1 ? "active" : ""}`}
-              onClick={() => setPage(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div>
-        <button className="nav-btn" disabled={page === totalPages} onClick={() => setPage(page + 1)}>
-          Next »
-        </button>
-      </div> */}
     </div>
   );
 };
